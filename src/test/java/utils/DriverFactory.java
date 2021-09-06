@@ -19,7 +19,7 @@ public class DriverFactory {
         try {
             properties.load(new FileReader("src/test/resources/test.properties"));
             RemoteWebDriver driver;
-            if (Boolean.getBoolean(properties.getProperty("selenium.grid"))){
+            if (Boolean.parseBoolean(properties.getProperty("selenium.grid"))){
                 DesiredCapabilities capabilities;
                 switch (browserName){
                     case "Chrome":

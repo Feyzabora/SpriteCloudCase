@@ -6,7 +6,6 @@ import org.openqa.selenium.*;
 
 public abstract class Utilities extends Driver {
 
-
     public Utilities(){PageFactory.initElements(driver, this);}
 
     public void clickElement(WebElement element){waitUntilClickable(centerElement(element),System.currentTimeMillis()).click();}

@@ -1,6 +1,5 @@
 # To execute this docker-compose yml file use `docker-compose -f docker-compose.yml up`
 # Add the `-d` flag at the end for detached execution
-
 version: '2'
 services:
   chrome:
