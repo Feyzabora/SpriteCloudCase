@@ -3,7 +3,9 @@ package pages;
 import org.apache.bcel.generic.Select;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.html5.Location;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import utils.Utilities;
@@ -36,25 +38,20 @@ public class InteractionsPage extends Utilities {
             if (groupItem.getText().contains(from)){
                 for (WebElement groupItemTo:nums) {
                     if (groupItemTo.getText().contains(to)){
-                        int toX = groupItemTo.getLocation().getX();
-                        int toY = groupItemTo.getLocation().getY();
-                        int X = groupItem.getLocation().getX();
-                        int Y = groupItem.getLocation().getY();
-                        int difX = toX-X;
-                        int difY = toY-Y;
                         actions.moveToElement(groupItem,0,0)
                                 .clickAndHold()
-                                .dragAndDropBy(groupItem,difX,difY)
+                                .moveToElement(groupItemTo)
+                                .release()
                                 .build()
                                 .perform();
 
+                        return;
+
                     }
-
                 }
-
             }
-
         }
+        Assert.fail("Could not locate elements to drag from & to");
     }
 
     public void dragDropBoxees (String from,String to){
@@ -78,8 +75,6 @@ public class InteractionsPage extends Utilities {
 
     }
 
-
-
     public void clickGridCards(String cardNumber,String cardNumber2){
         for (WebElement gridCard: nums) {
             if (gridCard.getText().contains(cardNumber)){
@@ -92,6 +87,8 @@ public class InteractionsPage extends Utilities {
         }
         Assert.fail("Could not find card: " + cardNumber);
     }
+
+
 
 
 }

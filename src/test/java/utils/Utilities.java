@@ -1,10 +1,18 @@
 package utils;
 
+import org.junit.Assert;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
 
 public abstract class Utilities extends Driver {
+
+    public void waitFor(double seconds){
+        try {Thread.sleep((long) (seconds * 1000));}
+        catch (InterruptedException e) {e.printStackTrace();}
+    }
 
     public Utilities(){PageFactory.initElements(driver, this);}
 
@@ -47,6 +55,15 @@ public abstract class Utilities extends Driver {
             exception.printStackTrace();
             return waitUntilVisible(element, initialTime);
         }
+    }
+
+    public void multipleSelect(){
+
+        WebElement dropdown = driver.findElement(By.cssSelector("[class=\" css-1wa3eu0-placeholder\"]"));
+        dropdown.click();
+        System.out.println(dropdown.getText());
+        Select select = new Select(dropdown);
+        select.selectByVisibleText("Group 2, option 1");
     }
 
 }

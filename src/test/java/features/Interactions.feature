@@ -5,6 +5,7 @@ Feature: Interactions
 
   Scenario: Change Numbers
     * I click element type Sortable
+    * I wait for 2 seconds
     * I drag Three to Five
 
   Scenario: Change Cards
@@ -16,9 +17,7 @@ Feature: Interactions
     * I click element type Selectable
     * I click grid
     * I select number Two and Five cards
-    * I wait for 10 seconds
 
   Scenario: Select Cards
     * I click element type Droppable
     * I click drag Drag me to Drop Here
-    * I wait for 10 seconds
