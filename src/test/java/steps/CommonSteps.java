@@ -20,9 +20,6 @@ public class CommonSteps extends Utilities {
 
         File screenShot = null;
 
-        apiUtils.url = "app.calliope.pro/api/v2/";
-        apiUtils.uri = "profile/"+ 3682 +"/import";
-
         if (scenario.isFailed()){
             System.out.println("Scenario named "+scenario.getName()+" failed!");
             String name = captureScreen(scenario.getName());
@@ -32,6 +29,10 @@ public class CommonSteps extends Utilities {
         }
 
         try {
+
+            apiUtils.url = "app.calliope.pro/api/v2/";
+            apiUtils.uri = "profile/"+ 3682 +"/import";
+
             File report = new File("target/surefire-reports/testng-results.xml");
             if (report.exists()){
                 Response response = apiUtils.uploadReport(report,screenShot,scenario);
