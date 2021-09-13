@@ -117,9 +117,9 @@ public class WidgetsPage extends Utilities {
     public void selectMenu(String menuType) {
         Actions actions = new Actions(driver);
         for (WebElement menu : menus) {
-            System.out.println(menu.getText());
-            actions.moveToElement(menu).perform();
             if (menu.getText().contains(menuType)) {
+                System.out.println(menu.getText());
+                actions.moveToElement(menu).perform();
                 return;
             }
         }

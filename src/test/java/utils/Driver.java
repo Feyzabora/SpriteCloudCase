@@ -12,7 +12,7 @@ public class Driver {
     public static RemoteWebDriver driver;
     public static WebDriverWait wait;
 
-    public void init() {
+    public void init() {//Init method  uses the Driverfactory to start a driver which is then saved in the driver class.
         try {
             properties.load(new FileReader("src/test/resources/test.properties"));
             driver = DriverFactory.driverInit(properties.getProperty("browser"));
@@ -24,4 +24,4 @@ public class Driver {
     }
 
     public void teardown(){ driver.quit(); }
-}
+}//The driver factory initialize the driver and driver calls the driver factory

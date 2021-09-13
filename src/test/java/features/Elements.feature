@@ -1,3 +1,4 @@
+@Elements
 Feature: Element Interactions
   Background:
     * I navigate to demoqa.com

@@ -1,3 +1,4 @@
+@Widgets
 Feature: Widget Interactions
   Background:
     * I navigate to demoqa.com
@@ -12,13 +13,13 @@ Feature: Widget Interactions
     * I select June from date picker
     * I verify date 09/27/2021
 
-  Scenario: Menu Interactions
+  Scenario: Menu widgets
     * I click element type Menu
     * I click menu type Main Item 2
-    * I click menu type  type SUB SUB LIST
+    * I click menu type SUB SUB LIST
     * I click menu type Sub Sub Item 2
 
-  Scenario: Select Menu Interactions
+  Scenario: Select Menu Widgets
     * I click element type Select Menu
     * I select color type Green
     * I click dropdown Select Option

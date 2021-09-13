@@ -10,12 +10,12 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
-
+//Let mew
 public class DriverFactory {
 
     private static final Properties properties = new Properties();
 
-    public static RemoteWebDriver driverInit(String browserName){
+    public static RemoteWebDriver driverInit(String browserName){// creates a new driver according to property in the test properties
         try {
             properties.load(new FileReader("src/test/resources/test.properties"));
             RemoteWebDriver driver;
@@ -37,7 +37,7 @@ public class DriverFactory {
             else {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("disable-notifications");
-                System.setProperty("webdriver.chrome.driver", "src/test/java/drivers/chromedriver");
+                System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver");
                 driver = new ChromeDriver(chromeOptions);
             }
             driver.manage().window().maximize();

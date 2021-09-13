@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import utils.Utilities;
-
 import java.util.List;
 
 public class ElementsPage extends Utilities {

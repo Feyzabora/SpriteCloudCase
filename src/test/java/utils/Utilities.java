@@ -1,11 +1,11 @@
 package utils;
 
-import org.junit.Assert;
-import org.openqa.selenium.support.FindBy;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import java.io.File;
 
 public abstract class Utilities extends Driver {
 
@@ -14,7 +14,7 @@ public abstract class Utilities extends Driver {
         catch (InterruptedException e) {e.printStackTrace();}
     }
 
-    public Utilities(){PageFactory.initElements(driver, this);}
+    public Utilities(){PageFactory.initElements(driver, this);} //Initializes page elements for page classes which extend Utilities
 
     public void clickElement(WebElement element){waitUntilClickable(centerElement(element),System.currentTimeMillis()).click();}
 
@@ -64,6 +64,24 @@ public abstract class Utilities extends Driver {
         System.out.println(dropdown.getText());
         Select select = new Select(dropdown);
         select.selectByVisibleText("Group 2, option 1");
+    }
+
+    public String captureScreen(String scenarioName) {
+        try {
+            System.out.println("Capturing page");
+
+            String name = scenarioName+"#"+ (int) (Math.random() * 1000) +".jpg";
+            File sourceFile = new File("Screenshots");
+            File fileDestination = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(fileDestination, new File(sourceFile, name));
+
+            System.out.println("Screenshot saved as; "+name+" at the \"Screenshots\" file.");
+
+            return name;
+        }catch (Exception gamma){
+            gamma.printStackTrace();
+            return null;
+        }
     }
 
 }

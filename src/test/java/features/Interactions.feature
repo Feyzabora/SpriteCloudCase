@@ -1,3 +1,4 @@
+@Interactions
 Feature: Interactions
   Background:
     * I navigate to demoqa.com
@@ -18,6 +19,6 @@ Feature: Interactions
     * I click grid
     * I select number Two and Five cards
 
-  Scenario: Select Cards
+  Scenario: Drop the box
     * I click element type Droppable
     * I click drag Drag me to Drop Here
