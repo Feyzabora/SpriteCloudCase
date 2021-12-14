@@ -1,0 +1,35 @@
+image: "spritecloud/ruby-selenium-runner:2.6"
+
+services:
+  - selenium/standalone-chrome:3.8.1
+
+variables:
+  SELENIUM_URL: "http://selenium__standalone-chrome:4444/wd/hub/"
+  API_KEY: ZTNlYWJjNjg4ZDJkOTI5ZDQ0MjJjYmQ1YWM4ZTFhZWU3YzlhMGJmN2EwYTIwNmZhODhkMjYxMTU4YThmN2I2OGI1
+  PROFILE_ID: 3905
+
+before_script:
+  - bundle install #Install the required gems
+  - export SELENIUM_ENV=remote
+
+curl-upload-example:
+  script:
+    - bundle exec cucumber -f json -o ./results/latest_results.json && true
+    - >
+      curl -X POST
+      -H "x-api-key:$API_KEY"
+      -H "Content-Type:multipart/form-data"
+      -F "file[]=@results/latest_results.json"
+      "https://app.calliope.pro/api/v2/profile/3905/import?tag[]=os:YOUR_OS&tag[]=platform:YOUR_PLATFORM&tag[]=build:YOUR_BUILD"
+  when: manual
+
+curl-upload-example-test-env:
+  script:
+    - bundle exec cucumber -f json -o ./results/latest_results.json && true
+    - >
+      curl -X POST
+      -H "x-api-key:$API_KEY"
+      -H "Content-Type:multipart/form-data"
+      -F "file[]=@results/latest_results.json"
+      "https://app.calliope.pro/api/v2/profile/3905/import?tag[]=os:YOUR_OS&tag[]=platform:YOUR_PLATFORM&tag[]=build:YOUR_BUILDD"
+  when: manual
